@@ -1,0 +1,16 @@
+---
+title: "Monolith: Headless publishing engine"
+slug: monolith
+---
+
+## The problem
+Longform architectural criticism was being published through a generic CMS that could not preserve its typographic rhythm or avoid layout shifts.
+
+## The approach
+I built a markdown-first content pipeline with typographic baseline constraints, automated ligature binding, and incremental edge compilation.
+
+## Outcome
+Cold builds fell from 4.2 minutes to 142ms. Published essays held CLS at 0.000 across an archive of more than 8,000 pieces.
+
+## Lessons learned
+Treating typography as structured content let editors make changes without breaking the reading grid.

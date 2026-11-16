@@ -1,0 +1,943 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="web_standard" name="shell-type">
+<title>Newton Nyoro — Physical Studio Archive &amp; Systems Monograph</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&amp;family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,400&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #F9F7F1;
+      }
+      body {
+        overscroll-behavior: none;
+        color: #181816;
+      }
+    }
+    ::-webkit-scrollbar { display: none; }
+
+    /* Pulsing radiant text effect */
+    @keyframes radiant-pulse {
+      0% {
+        background-position: -150% center;
+      }
+      100% {
+        background-position: 250% center;
+      }
+    }
+    .radiant-stroke-text {
+      -webkit-text-stroke: 1.5px rgba(43, 76, 63, 0.28);
+      color: transparent;
+      background: linear-gradient(90deg, 
+        rgba(20, 53, 41, 0.05) 0%, 
+        rgba(43, 76, 63, 0.22) 20%, 
+        rgba(43, 76, 63, 0.75) 45%, 
+        rgba(198, 235, 217, 0.95) 50%, 
+        rgba(43, 76, 63, 0.75) 55%, 
+        rgba(43, 76, 63, 0.22) 80%, 
+        rgba(20, 53, 41, 0.05) 100%
+      );
+      background-size: 220% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: radiant-pulse 6.5s ease-in-out infinite;
+    }
+
+    /* Tactile ink wavy underline effect */
+    .ink-link {
+      position: relative;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .ink-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 3px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='4' viewBox='0 0 20 4'%3E%3Cpath d='M0 2 Q 5 0, 10 2 T 20 2' fill='none' stroke='%23143529' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+      background-size: 16px 3px;
+      opacity: 0.35;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .ink-link:hover::after {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    /* Paper ruled lines */
+    .ruled-paper {
+      background-image: repeating-linear-gradient(
+        transparent,
+        transparent 27px,
+        rgba(202, 198, 190, 0.32) 27px,
+        rgba(202, 198, 190, 0.32) 28px
+      );
+      line-height: 28px;
+    }
+
+    /* Coffee cup ring stain */
+    .coffee-stain {
+      position: absolute;
+      border-radius: 50%;
+      border: 5px solid rgba(168, 140, 105, 0.12);
+      filter: blur(1.5px);
+      box-shadow: inset 0 0 12px rgba(168, 140, 105, 0.08), 0 0 8px rgba(168, 140, 105, 0.08);
+      pointer-events: none;
+    }
+    .coffee-stain::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 2px dashed rgba(168, 140, 105, 0.16);
+      opacity: 0.7;
+    }
+
+    /* Developer animation keyframes */
+    @keyframes typing-hands {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-2px) rotate(1deg); }
+      50% { transform: translateY(1px) rotate(-1deg); }
+      75% { transform: translateY(-1.5px) rotate(0.5deg); }
+    }
+    @keyframes gentle-breathe {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-2px); }
+    }
+    @keyframes screen-glow {
+      0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 4px rgba(43,76,63,0.25)); }
+      50% { opacity: 0.95; filter: drop-shadow(0 0 10px rgba(43,76,63,0.45)); }
+    }
+    @keyframes float-particle {
+      0% { transform: translateY(0px) scale(0.8); opacity: 0; }
+      30% { opacity: 0.85; }
+      80% { opacity: 0.5; }
+      100% { transform: translateY(-24px) scale(1.1); opacity: 0; }
+    }
+    @keyframes steam-drift {
+      0% { transform: translateY(0px) scaleX(1); opacity: 0; }
+      40% { opacity: 0.6; }
+      100% { transform: translateY(-14px) scaleX(1.3); opacity: 0; }
+    }
+    .anim-hands { animation: typing-hands 0.75s ease-in-out infinite; transform-origin: 75px 85px; }
+    .anim-breathe { animation: gentle-breathe 4s ease-in-out infinite; }
+    .anim-screen { animation: screen-glow 2.5s ease-in-out infinite; }
+    .anim-p1 { animation: float-particle 3.2s ease-in-out infinite; }
+    .anim-p2 { animation: float-particle 3.8s ease-in-out infinite 1.2s; }
+    .anim-p3 { animation: float-particle 4.1s ease-in-out infinite 2s; }
+    .anim-steam { animation: steam-drift 2.6s ease-out infinite; }
+
+    /* Photo Mount / Archival Taped Corner effect */
+    .photo-corner-tl {
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      width: 14px;
+      height: 14px;
+      border-top: 2px solid #717974;
+      border-left: 2px solid #717974;
+    }
+    .photo-corner-br {
+      position: absolute;
+      bottom: -3px;
+      right: -3px;
+      width: 14px;
+      height: 14px;
+      border-bottom: 2px solid #717974;
+      border-right: 2px solid #717974;
+    }
+    .paper-tape {
+      position: absolute;
+      background: rgba(220, 214, 196, 0.7);
+      backdrop-filter: blur(1px);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+      transform: rotate(-3deg);
+      border-left: 1px dashed rgba(120, 110, 90, 0.3);
+      border-right: 1px dashed rgba(120, 110, 90, 0.3);
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-bright": "#fcf9f5",
+            "primary-container": "#2b4c3f",
+            "secondary-fixed-dim": "#cac6be",
+            "inverse-on-surface": "#f3f0ec",
+            "inverse-primary": "#aacfbd",
+            "tertiary": "#482524",
+            "surface-tint": "#446557",
+            "tertiary-container": "#623b39",
+            "on-surface": "#181816",
+            "on-primary": "#ffffff",
+            "outline": "#717974",
+            "error": "#ba1a1a",
+            "surface-container": "#f2eee7",
+            "primary": "#143529",
+            "surface-container-high": "#eae5dc",
+            "outline-variant": "#c1c8c3",
+            "secondary-fixed": "#e6e2d9",
+            "secondary": "#57554e",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-highest": "#ded8cd",
+            "on-background": "#181816",
+            "background": "#F9F7F1",
+            "on-primary-container": "#98bbab",
+            "surface-variant": "#eae5dc",
+            "primary-fixed": "#c6ebd9",
+            "secondary-container": "#ded8cd",
+            "surface-container-low": "#f6f3eb",
+            "surface": "#F9F7F1",
+            "on-surface-variant": "#484640",
+            "paper-cream": "#F9F7F1",
+            "paper-mat": "#FDFBF7",
+            "ink-black": "#181816",
+            "ink-muted": "#63615A",
+            "stamp-red": "#A83232",
+            "stamp-green": "#2B4C3F"
+          },
+          fontFamily: {
+            "hand": ["Caveat", "cursive"],
+            "metadata-num": ["JetBrains Mono", "monospace"],
+            "body-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-xl": ["Newsreader", "serif"],
+            "headline-lg": ["Newsreader", "serif"],
+            "headline-md": ["Newsreader", "serif"],
+            "headline-sm": ["Newsreader", "serif"],
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "body-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "metadata-caps": ["JetBrains Mono", "monospace"],
+            "code-inline": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-paper-cream text-ink-black font-body-md antialiased relative selection:bg-primary selection:text-white">
+<!-- 1. FINE SVG NOISE PAPER-GRAIN TEXTURE OVERLAY (300gsm ARCHIVAL COTTON) -->
+<div aria-hidden="true" class="fixed inset-0 pointer-events-none z-50 opacity-[0.045] mix-blend-multiply">
+<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+<filter id="cotton-grain">
+<feTurbulence baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" type="fractalNoise"></feTurbulence>
+<feColorMatrix type="matrix" values="0 0 0 0 0.1   0 0 0 0 0.1   0 0 0 0 0.1   0 0 0 1 0"></feColorMatrix>
+</filter>
+<rect filter="url(#cotton-grain)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<!-- Subtle watercolor / dried coffee ring stain in margin -->
+<div class="coffee-stain w-36 h-36 md:w-44 md:h-44 top-24 -left-12 opacity-80 z-0"></div>
+<div class="coffee-stain w-28 h-28 bottom-48 right-6 opacity-40 z-0"></div>
+<!-- Swiss grid archival margin markings (Left & Right ruler ticks) -->
+<aside aria-hidden="true" class="hidden xl:flex fixed left-3 top-0 bottom-0 flex-col justify-between py-12 pointer-events-none select-none z-20 text-[9px] font-metadata-num text-ink-muted/50 border-r border-secondary-container/60 pr-2">
+<span>+000MM</span>
+<span class="rotate-90 origin-left tracking-widest uppercase">PRINT ARCHIVE // CAT. 2026-N</span>
+<span>+120MM</span>
+<span class="font-hand text-base text-ink-muted/70 -rotate-90">300gsm</span>
+<span>+240MM</span>
+<span>+360MM</span>
+<div class="flex flex-col gap-0.5 font-code-inline text-[8px]">
+<span>| | | | /</span>
+<span>| | | | /</span>
+<span>| |</span>
+</div>
+<span>END_OF_PAGE</span>
+</aside>
+<!-- 2. EDITORIAL PHYSICAL HEADER & TACTILE NAVIGATION -->
+<header class="sticky top-0 left-0 right-0 z-40 bg-[#F9F7F1]/90 backdrop-blur-sm border-b border-ink-black/15">
+<div class="max-w-[1180px] mx-auto px-4 md:px-8 py-3 flex flex-col md:flex-row md:items-center justify-between gap-3">
+<!-- Studio Identity + Hairline Ink Stamp -->
+<div class="flex items-center gap-3">
+<a class="flex items-center gap-2 group text-left" data-path="projects" href="#">
+<span class="w-7 h-7 bg-primary text-paper-cream flex items-center justify-center font-metadata-caps text-[11px] font-medium tracking-tight border border-primary">NN</span>
+<div class="flex flex-col leading-tight">
+<span class="font-headline-sm text-[17px] tracking-tight font-medium uppercase text-ink-black group-hover:text-primary transition-colors">
+              Newton Nyoro
+            </span>
+<span class="font-metadata-caps text-[10px] tracking-widest text-ink-muted uppercase">
+              Physical Systems &amp; Software Studio
+            </span>
+</div>
+</a>
+<!-- Crisp Ink Stamp Box -->
+
+</div>
+<!-- Center Status Notice -->
+
+<!-- Nav Links with Hand-Drawn Wavy Underline -->
+<nav class="flex items-center gap-5 md:gap-6 font-metadata-caps text-[11px] tracking-wider uppercase text-ink-black"><a class="ink-link flex items-center gap-1.5 font-metadata-caps text-[11px] tracking-wider uppercase text-ink-black hover:text-primary transition-colors group" href="#selected-work"><svg class="w-3.5 h-3.5 rotate-[-25deg] text-ink-muted group-hover:text-primary transition-colors" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l7.88-7.88"></path></svg><span>Project Files</span></a><a class="px-3.5 py-1.5 bg-primary text-paper-cream font-metadata-caps text-[10px] tracking-widest uppercase border border-primary hover:bg-ink-black transition-all shadow-[2px_2px_0px_#181816] inline-flex items-center gap-1" href="mailto:newton@nyoro.studio"><span>Hire Me</span><span class="font-mono text-[9px] opacity-80">↗</span></a></nav>
+</div>
+</header>
+<main class="w-full relative min-h-screen overflow-hidden">
+<div class="w-full max-w-[1180px] mx-auto px-4 md:px-8 py-10 md:py-16 relative">
+<!-- 3. HERO AS MONOGRAPH COVER (ASYMMETRIC, TACTILE, HUMAN-CRAFTED) -->
+<section class="relative pt-6 md:pt-12 pb-16 border-b border-ink-black/20">
+<!-- RADIANT HOLLOW PULSING BACKDROP 'NYORO' (PRESERVED & AMPLIFIED) -->
+<div aria-hidden="true" class="absolute -top-6 md:-top-10 left-1/2 -translate-x-1/2 w-full select-none pointer-events-none z-0 flex items-center justify-center overflow-visible">
+<span class="radiant-stroke-text font-headline-xl font-normal tracking-tight uppercase leading-none opacity-90 text-[24vw] md:text-[20vw] lg:text-[200px]">
+            NYORO
+          </span>
+</div>
+<!-- Marginalia Ink Script Annotation (Top Left) -->
+<div class="relative z-10 flex items-center justify-between mb-4">
+<div class="inline-flex items-center gap-2">
+<span class="font-hand text-xl text-ink-muted -rotate-2 select-none">
+              fig 01. — notes from the studio desk: deterministic code, quiet paper.
+            </span>
+</div>
+<!-- Production Stamp -->
+<div class="rotate-[3deg] border border-stamp-red px-2.5 py-0.5 text-stamp-red font-metadata-caps text-[10px] tracking-widest uppercase bg-[#FAF3F0] shadow-[2px_2px_0px_rgba(168,50,50,0.15)] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[12px]">verified</span>
+<span>APPROVED FOR RUN // ED. 2026</span>
+</div>
+</div>
+<!-- Monograph Hero Layout -->
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mt-2">
+<!-- Left Column (Massive Typography + Inscription) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<div class="flex items-center gap-2 font-metadata-num text-[11px] text-ink-muted tracking-widest uppercase border-b border-secondary-container pb-2 max-w-fit">
+<span class="text-primary font-bold">VOL. XXVI</span>
+<span>/</span>
+<span>ENGINEERING MONOGRAPH &amp; ARCHIVE</span>
+<span>/</span>
+<span>NAIROBI · LONDON</span>
+</div>
+<!-- Massive Editorial Title with Handwritten Circle Accent -->
+<h1 class="font-headline-xl text-[42px] sm:text-[54px] md:text-[68px] lg:text-[74px] leading-[1.04] text-ink-black font-normal tracking-[-0.03em]">
+              Newton Nyoro. I design and build fast, 
+              <span class="relative inline-block whitespace-nowrap italic font-serif px-2">
+<!-- Handwritten Circle Oval SVG Doodle encircling 'thoughtful' -->
+                thoughtful
+                <svg class="absolute -inset-x-2 -inset-y-1.5 w-[calc(100%+16px)] h-[calc(100%+12px)] pointer-events-none text-stamp-green" fill="none" preserveAspectRatio="none" viewBox="0 0 160 60">
+<path d="M12,32 C10,14 45,6 88,8 C135,10 156,22 153,38 C150,52 118,56 70,55 C28,54 6,45 8,30 C9,22 22,16 38,15" opacity="0.85" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</span>
+              web systems with clean architecture and 
+              <em class="font-serif italic font-light text-primary">quiet interfaces.</em>
+</h1>
+<p class="font-body-lg text-[18px] md:text-[20px] text-ink-muted leading-relaxed max-w-2xl font-light">
+              Senior software engineer specializing in distributed backend consensus, high-concurrency systems in Rust and TypeScript, and digital print-editorial engines.
+            </p>
+<!-- Book-plate Action Buttons + Tactile Handwritten link -->
+<div class="flex flex-wrap items-center gap-4 pt-3">
+<a class="px-6 py-3 bg-primary text-paper-cream font-metadata-caps text-[11px] tracking-widest uppercase border border-primary hover:bg-ink-black transition-colors flex items-center gap-2 shadow-[2px_2px_0px_#181816]" href="#selected-work">
+<span>Open Index of Works</span>
+<span class="material-symbols-outlined text-[15px]">arrow_downward</span>
+</a>
+<a class="px-5 py-3 bg-paper-mat text-ink-black font-metadata-caps text-[11px] tracking-widest uppercase border border-ink-black/40 hover:border-ink-black hover:bg-white transition-all shadow-[2px_2px_0px_rgba(0,0,0,0.06)]" href="#studio-notebook">
+                Studio Notebook
+              </a>
+<a class="group ml-2 inline-flex items-center gap-1.5 font-hand text-2xl text-ink-muted hover:text-ink-black transition-colors -rotate-1" href="#">
+<span class="underline decoration-ink-black/40 underline-offset-4 group-hover:decoration-ink-black">Download Curriculum Vitae (PDF)</span>
+<span class="text-xs font-mono font-normal">↗ [1.2MB]</span>
+</a>
+</div>
+<!-- Hand-drawn Fountain Pen Detail Sketch -->
+<div class="pt-4 flex items-center gap-4 text-ink-muted">
+<svg class="w-8 h-8 opacity-60 text-ink-black" fill="none" viewBox="0 0 40 40">
+<path d="M6 34 L12 28 L28 12 L34 18 L18 34 L6 34 Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.2"></path>
+<path d="M25 15 L22 18" stroke="currentColor" stroke-width="1.2"></path>
+<circle cx="9" cy="31" fill="currentColor" r="1.5"></circle>
+<path d="M6 34 L2 38" stroke="currentColor" stroke-width="1.5"></path>
+</svg>
+<div class="font-metadata-caps text-[10px] tracking-wider uppercase text-ink-muted">
+                Drawn by hand with fountain pen &amp; ink · Monotype Newsreader &amp; JetBrains Mono
+              </div>
+</div>
+</div>
+<!-- Right Column: CHARMING ANIMATED DEVELOPER WITH LAPTOP ILLUSTRATION -->
+<div class="lg:col-span-4 flex flex-col gap-4">
+<!-- Polaroid / Archival Plate Container -->
+<div class="relative bg-paper-mat border border-ink-black/25 p-4 shadow-[4px_4px_0px_rgba(24,24,22,0.12)]">
+<!-- Archival Corner Tape -->
+<div class="paper-tape w-16 h-5 -top-2.5 right-6 z-20"></div>
+<div class="photo-corner-tl"></div>
+<div class="photo-corner-br"></div>
+<!-- Plate Header -->
+<div class="flex items-center justify-between border-b border-ink-black/15 pb-2 mb-3">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-metadata-caps text-[10px] tracking-wider text-ink-black uppercase font-medium">
+                    PLATE NO. 01 — WORKSPACE ENGINE
+                  </span>
+</div>
+<span class="font-metadata-num text-[9px] px-1.5 py-0.2 border border-primary text-primary bg-primary/5 uppercase">
+                  ACTIVE_DAEMON
+                </span>
+</div>
+<!-- PRESERVED ANIMATED DEVELOPER SVG GRAPHIC -->
+<div class="bg-surface-container-high/40 p-2 border border-secondary-container">
+<svg class="w-full h-auto" fill="none" viewBox="0 0 240 150" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="laptop-screen-glow" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#c6ebd9" stop-opacity="0.95"></stop>
+<stop offset="100%" stop-color="#98bbab" stop-opacity="0.85"></stop>
+</linearGradient>
+<linearGradient id="screen-beam" x1="0%" x2="0%" y1="100%" y2="0%">
+<stop offset="0%" stop-color="#c6ebd9" stop-opacity="0.45"></stop>
+<stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<!-- Desk / Horizon line -->
+<rect fill="#ded8cd" height="2" rx="1" width="210" x="15" y="128"></rect>
+<!-- Coffee cup with animated steam -->
+<g transform="translate(195, 114)">
+<rect fill="#ebe8e4" height="12" rx="2" stroke="#717974" stroke-width="1.2" width="14" x="0" y="3"></rect>
+<path d="M14 6 C17 6 17 11 14 11" fill="none" stroke="#717974" stroke-width="1.2"></path>
+<!-- Steam lines -->
+<path class="anim-steam" d="M4 1 C5 -3 3 -6 5 -9" fill="none" stroke="#98bbab" stroke-linecap="round" stroke-width="1.2"></path>
+<path class="anim-steam" d="M8 1 C7 -3 9 -6 8 -9" fill="none" stroke="#98bbab" stroke-linecap="round" stroke-width="1.2" style="animation-delay: 1.1s;"></path>
+</g>
+<!-- Floating Code particles from workspace -->
+<g class="font-code-inline text-[9px] fill-[#2c4d40]">
+<text class="anim-p1" x="145" y="65">&lt;/&gt;</text>
+<text class="anim-p2" x="175" y="55">{;}</text>
+<text class="anim-p3" x="160" y="40">λ</text>
+</g>
+<!-- Chair backrest -->
+<path d="M48 64 C48 58 52 54 58 54 L62 54 C65 54 67 56 67 60 L67 112 C67 115 65 117 62 117 L56 117 C52 117 48 113 48 109 Z" fill="#eae5dc" stroke="#717974" stroke-width="1.2"></path>
+<line stroke="#717974" stroke-width="2" x1="58" x2="58" y1="117" y2="132"></line>
+<line stroke="#717974" stroke-linecap="round" stroke-width="2" x1="48" x2="68" y1="132" y2="132"></line>
+<!-- Breathing Torso & Head Group -->
+<g class="anim-breathe">
+<!-- Torso / Dark Green Knit Pullover -->
+<path d="M66 84 C66 74 74 72 86 72 C98 72 108 76 108 86 L106 122 L72 122 Z" fill="#143529"></path>
+<!-- Collar & Neck -->
+<path d="M82 68 L88 68 L88 74 L82 74 Z" fill="#e6c2a4"></path>
+<path d="M78 72 Q86 78 94 72" fill="none" stroke="#2b4c3f" stroke-width="2"></path>
+<!-- Head & Hair -->
+<g transform="translate(76, 38)">
+<!-- Head/Face -->
+<rect fill="#e6c2a4" height="22" rx="7" width="18" x="4" y="10"></rect>
+<!-- Stylish Hair (Newton) -->
+<path d="M2 13 C2 6 8 3 15 3 C22 3 25 7 25 12 C23 11 20 10 16 11 C11 12 7 10 2 13 Z" fill="#1c1c1a"></path>
+<path d="M1 13 C0 17 3 20 3 21 C4 18 4 15 5 14 Z" fill="#1c1c1a"></path>
+<!-- Minimalist Glasses -->
+<circle cx="16" cy="19" fill="none" r="4.2" stroke="#1c1c1a" stroke-width="1.2"></circle>
+<line stroke="#1c1c1a" stroke-width="1.2" x1="12" x2="10" y1="18.5" y2="18.5"></line>
+<line stroke="#1c1c1a" stroke-width="1.2" x1="20.2" x2="23" y1="19" y2="18"></line>
+<!-- Eye & Smile -->
+<circle cx="16" cy="19" fill="#1c1c1a" r="1.2"></circle>
+<path d="M14 26 Q17 28 19 26" fill="none" stroke="#8c6a50" stroke-linecap="round" stroke-width="1"></path>
+</g>
+<!-- Upper Arm -->
+<path d="M76 82 C76 82 86 92 94 95" fill="none" stroke="#143529" stroke-linecap="round" stroke-width="9"></path>
+</g>
+<!-- Typing Hands & Forearm (animated typing) -->
+<g class="anim-hands">
+<path d="M92 94 L114 105 L124 106" fill="none" stroke="#143529" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"></path>
+<circle cx="125" cy="106" fill="#e6c2a4" r="3.2"></circle>
+<path d="M88 95 L110 108 L119 109" fill="none" opacity="0.8" stroke="#143529" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"></path>
+<circle cx="120" cy="109" fill="#dfb99b" r="3"></circle>
+</g>
+<!-- Laptop Screen Light Beam -->
+<polygon fill="url(#screen-beam)" opacity="0.6" points="126,104 140,70 175,70 148,104"></polygon>
+<!-- Laptop Stand & Base -->
+<polygon fill="#eae5dc" points="116,112 152,112 147,105 120,105" stroke="#717974" stroke-width="1.2"></polygon>
+<polygon class="anim-screen" fill="url(#laptop-screen-glow)" points="144,70 166,75 147,106 137,104" stroke="#143529" stroke-width="1.2"></polygon>
+<!-- Screen code lines glow -->
+<line opacity="0.8" stroke="#143529" stroke-linecap="round" stroke-width="1.2" x1="147" x2="160" y1="77" y2="80"></line>
+<line opacity="0.8" stroke="#143529" stroke-linecap="round" stroke-width="1.2" x1="145" x2="157" y1="83" y2="86"></line>
+<line opacity="0.8" stroke="#143529" stroke-linecap="round" stroke-width="1.2" x1="143" x2="155" y1="89" y2="92"></line>
+<line opacity="0.8" stroke="#143529" stroke-linecap="round" stroke-width="1.2" x1="141" x2="150" y1="95" y2="97"></line>
+<path d="M125 112 L128 128 L142 128 L144 112" fill="none" stroke="#717974" stroke-linejoin="round" stroke-width="1.4"></path>
+</svg>
+</div>
+<!-- Archival Caption Note -->
+<div class="mt-3 pt-2 border-t border-ink-black/10 flex flex-col gap-1 font-mono text-[10px] text-ink-muted">
+<div class="flex justify-between items-center">
+<span>TELEMETRY: RAFT://N-LON</span>
+<span class="text-primary font-semibold">99.98% UP</span>
+</div>
+<div class="font-hand text-lg text-ink-black pt-1 leading-snug">
+                  "Writing deterministic tests until dusk."
+                </div>
+</div>
+</div>
+<!-- Tactile studio tally card -->
+<div class="border border-dashed border-ink-black/30 p-3 bg-surface-container-low/60 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-metadata-caps text-[9px] tracking-widest text-ink-muted uppercase">Production Tally</span>
+<span class="font-headline-sm text-lg font-serif italic">11+ Years at the Console</span>
+</div>
+<div class="font-code-inline text-[13px] text-primary tracking-widest">
+<s>||||</s> <s>||||</s> |
+              </div>
+</div>
+</div>
+</div>
+<!-- Archival Ledger Strip (Four metric registers) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-6 border-t border-ink-black/15">
+<div class="flex flex-col border-l border-ink-black/20 pl-3">
+<span class="font-metadata-num text-[10px] tracking-widest text-ink-muted uppercase">01 / DISCIPLINE</span>
+<span class="font-headline-sm text-[21px] text-ink-black font-medium mt-0.5">Backend &amp; Platform</span>
+<span class="font-body-sm text-[12px] text-ink-muted">Distributed Core Systems</span>
+</div>
+<div class="flex flex-col border-l border-ink-black/20 pl-3">
+<span class="font-metadata-num text-[10px] tracking-widest text-ink-muted uppercase">02 / CORE STACK</span>
+<span class="font-headline-sm text-[21px] text-ink-black font-medium mt-0.5">Rust · Tokio · Node</span>
+<span class="font-body-sm text-[12px] text-ink-muted">TypeScript &amp; WebAssembly</span>
+</div>
+<div class="flex flex-col border-l border-ink-black/20 pl-3">
+<span class="font-metadata-num text-[10px] tracking-widest text-ink-muted uppercase">03 / SCHEDULE</span>
+<span class="font-headline-sm text-[21px] text-ink-black font-medium mt-0.5">Spring 2026</span>
+<span class="font-body-sm text-[12px] text-ink-muted">Accepting Select Contracts</span>
+</div>
+<div class="flex flex-col border-l border-ink-black/20 pl-3">
+<span class="font-metadata-num text-[10px] tracking-widest text-ink-muted uppercase">04 / LAT / LONG</span>
+<span class="font-headline-sm text-[21px] text-ink-black font-medium mt-0.5">Nairobi / Remote</span>
+<span class="font-body-sm text-[12px] text-ink-muted">Global Async Architecture</span>
+</div>
+</div>
+</section>
+<!-- 4. HUMAN-CRAFTED PROJECT PRESENTATION: STAGGERED EDITORIAL SPREAD (3 PROJECTS) -->
+<section class="mt-16 md:mt-24" id="selected-work">
+<!-- Section Header with Museum Catalogue Index -->
+<div class="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-ink-black pb-4 mb-14 gap-4">
+<div class="flex flex-col gap-1">
+<div class="font-metadata-num text-[11px] text-stamp-green tracking-widest uppercase flex items-center gap-2">
+<span class="w-2 h-2 bg-stamp-green inline-block"></span>
+              ARCHIVAL CATALOGUE // SECT. 03
+            </div>
+<h2 class="font-headline-lg text-[36px] md:text-[46px] font-normal tracking-tight text-ink-black">
+              Selected Works &amp; Case Studies
+            </h2>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-hand text-xl text-ink-muted -rotate-2">"crafted for high durability under load"</span>
+<div class="font-mono text-[11px] border border-ink-black px-2 py-1 bg-paper-mat">
+              INDEX: 01 — 03
+            </div>
+</div>
+</div>
+<div class="flex flex-col gap-20">
+<!-- PROJECT 01: AETHERDB (LEFT-HEAVY ARCHIVAL MOUNT) -->
+<article class="relative">
+<!-- Asymmetric Margin Index Callout -->
+<div class="hidden lg:block absolute -left-12 top-6 font-metadata-num text-[11px] text-ink-muted/70 -rotate-90 origin-right">
+              CAT. #NY-084 // DISTRIBUTED
+            </div>
+<div class="bg-paper-mat border border-ink-black/20 p-6 md:p-10 shadow-[6px_6px_0px_rgba(24,24,22,0.08)] relative">
+<!-- Tape Accent -->
+<div class="paper-tape w-20 h-5 -top-3 left-12"></div>
+<div class="photo-corner-tl"></div>
+<div class="photo-corner-br"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+<!-- Left: Archival Code / Terminal Graphic Mount (5 cols) -->
+<div class="lg:col-span-5 bg-[#F4EFE6] border border-ink-black/20 p-4 relative">
+<div class="flex items-center justify-between border-b border-ink-black/15 pb-2 mb-3">
+<span class="font-code-inline text-[11px] text-ink-black font-semibold">aether_core::raft::engine</span>
+<span class="font-metadata-num text-[10px] text-stamp-green bg-stamp-green/10 px-1.5 py-0.5 border border-stamp-green/30">p99: 0.84ms</span>
+</div>
+<!-- Graphic Screen Inside Mat -->
+<div class="bg-white border border-ink-black/15 p-4 flex flex-col gap-2.5 font-code-inline text-[11px]">
+<div class="flex items-center justify-between text-ink-black font-semibold border-b border-secondary-container pb-1.5">
+<span class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+                        CLUSTER: LON_01_PRIMARY
+                      </span>
+<span class="text-ink-muted font-normal">TERM: 04</span>
+</div>
+<div class="text-ink-muted text-[11px] leading-relaxed font-mono">
+                      &gt; sync_commit: 184,920 records<br>
+                      &gt; quorum: 5/5 peers healthy (42ms hb)<br>
+                      &gt; throughput: 52,410 ops/sec (mmap)
+                    </div>
+<!-- Sparkline with handwritten ink feel -->
+<div class="pt-2">
+<svg class="w-full h-11 text-primary" fill="none" preserveAspectRatio="none" viewBox="0 0 240 40">
+<path d="M0,32 L20,30 L40,31 L60,24 L80,26 L100,18 L120,20 L140,12 L160,15 L180,8 L200,10 L220,5 L240,6" stroke="currentColor" stroke-linecap="round" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path d="M0,32 L20,30 L40,31 L60,24 L80,26 L100,18 L120,20 L140,12 L160,15 L180,8 L200,10 L220,5 L240,6 L240,40 L0,40 Z" fill="currentColor" fill-opacity="0.1"></path>
+</svg>
+<div class="flex justify-between text-[9px] font-metadata-num text-ink-muted pt-1">
+<span>T-60s</span>
+<span>0.84ms p99 LATENCY STABLE</span>
+<span>LIVE</span>
+</div>
+</div>
+</div>
+<!-- Polaroid Caption -->
+<div class="mt-2.5 flex items-center justify-between font-hand text-[15px] text-ink-muted">
+<span>Fig 01.1 · Lock-free Ring Buffer Telemetry</span>
+<span class="font-metadata-num text-[10px] text-ink-black">ZERO_MUTEX</span>
+</div>
+</div>
+<!-- Right: Details (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="flex items-baseline gap-3">
+<span class="font-headline-xl text-[54px] md:text-[62px] text-stamp-green/80 italic font-serif leading-none select-none">
+                      01.
+                    </span>
+<div class="flex flex-col">
+<span class="font-metadata-caps text-[10px] tracking-widest text-ink-muted uppercase">DISTRIBUTED MEMORY ENGINE</span>
+<h3 class="font-headline-md text-[28px] md:text-[34px] leading-tight text-ink-black font-normal">
+                        AetherDB: Low-latency consensus cache
+                      </h3>
+</div>
+</div>
+<p class="font-body-md text-[16px] text-ink-muted leading-relaxed">
+                    A high-throughput distributed memory-mapped storage engine built for real-time telemetry streaming and high-frequency writes. Achieved sustained sub-millisecond p99 read latencies under 50,000 concurrent client operations without centralized locking bottlenecks.
+                  </p>
+<!-- Archival Museum Specs Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 py-3 border-y border-ink-black/10 font-mono text-[11px]">
+<div>
+<span class="block text-ink-muted text-[9px] uppercase">YEAR</span>
+<span class="text-ink-black font-medium">2026</span>
+</div>
+<div>
+<span class="block text-ink-muted text-[9px] uppercase">ROLE</span>
+<span class="text-ink-black font-medium">Lead Architect</span>
+</div>
+<div>
+<span class="block text-ink-muted text-[9px] uppercase">STACK</span>
+<span class="text-ink-black font-medium">Rust / Raft</span>
+</div>
+<div>
+<span class="block text-ink-muted text-[9px] uppercase">CATALOG ID</span>
+<span class="text-ink-black font-medium">#NY-084</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+<div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-ink-muted">
+<span class="border border-ink-black/25 px-2 py-0.5 bg-paper-cream">Rust</span>
+<span class="border border-ink-black/25 px-2 py-0.5 bg-paper-cream">Raft Consensus</span>
+<span class="border border-ink-black/25 px-2 py-0.5 bg-paper-cream">TypeScript</span>
+<span class="border border-ink-black/25 px-2 py-0.5 bg-paper-cream">Memory-Mapped</span>
+</div>
+<a class="ink-link font-metadata-caps text-[11px] tracking-wider uppercase text-primary font-bold inline-flex items-center gap-1" href="#">
+<span>Examine Architectural Spec</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- PROJECT 02: MONOLITH (RIGHT-OFFSET ARCHIVAL SPREAD + MARGIN NOTES) -->
+<article class="relative lg:ml-12">
+<div class="bg-paper-mat border border-ink-black/20 p-6 md:p-10 shadow-[6px_6px_0px_rgba(24,24,22,0.08)] relative">
+<div class="paper-tape w-20 h-5 -top-3 right-16 rotate-[2deg]"></div>
+<div class="photo-corner-tl"></div>
+<div class="photo-corner-br"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+<!-- Left: Details First in DOM or Order -->
+<div class="lg:col-span-7 flex flex-col gap-4 order-2 lg:order-1">
+<div class="flex items-baseline gap-3">
+<span class="font-headline-xl text-[54px] md:text-[62px] text-stamp-green/80 italic font-serif leading-none select-none">
+                      02.
+                    </span>
+<div class="flex flex-col">
+<span class="font-metadata-caps text-[10px] tracking-widest text-ink-muted uppercase">HEADLESS PRINT ESSAY ENGINE</span>
+<h3 class="font-headline-md text-[28px] md:text-[34px] leading-tight text-ink-black font-normal">
+                        Monolith: Headless publishing engine for architectural reviews
+                      </h3>
+</div>
+</div>
+<p class="font-body-md text-[16px] text-ink-muted leading-relaxed">
+                    Engineered a bespoke markdown-driven CMS delivering zero-layout-shift (CLS 0.000) visual essays for longform criticism. Features mathematical baseline grids, automated typographic ligature binding, and high-performance edge compilation across 8,000 published essays.
+                  </p>
+<!-- Handwritten Marginalia Callout beside project -->
+<div class="font-hand text-[17px] text-ink-muted border-l-2 border-primary/40 pl-3 py-1">
+                    "Cold build time reduced from 4.2m down to 142ms via incremental static pipeline."
+                  </div>
+<!-- Museum Catalogue Specs Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 py-3 border-y border-ink-black/10 font-mono text-[11px]">
+<div>
+<span class="block text-ink-muted text-[9px] uppercase">YEAR</span>
+<span class="text-ink-black font-medium">2025</span>
+</div>
+<div>
+<span class="block text-ink-muted text-[9px] uppercase">ROLE</span>
+<span class="text-ink-black font-medium">Principal Engineer</span>
+</div>
+<div>
+<span class="block text-ink-muted text-[9px] uppercase">OUTPUT</span>
+<span class="text-ink-black font-medium">CLS 0.000 / Edge</span>
+</div>
+<div>
+<span class="block text-ink-muted text-[9px] uppercase">CATALOG ID</span>
+<span class="text-ink-black font-medium">#NY-091</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+<div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-ink-muted">
+<span class="border border-ink-black/25 px-2 py-0.5 bg-paper-cream">Next.js 14</span>
+<span class="border border-ink-black/25 px-2 py-0.5 bg-paper-cream">Tailwind CSS</span>
+<span class="border border-ink-black/25 px-2 py-0.5 bg-paper-cream">PostgreSQL</span>
+<span class="border border-ink-black/25 px-2 py-0.5 bg-paper-cream">Edge Workers</span>
+</div>
+<a class="ink-link font-metadata-caps text-[11px] tracking-wider uppercase text-primary font-bold inline-flex items-center gap-1" href="#">
+<span>Review Editorial Layout</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Right: Editorial Wireframe Mount (5 cols) -->
+<div class="lg:col-span-5 bg-[#F4EFE6] border border-ink-black/20 p-4 relative order-1 lg:order-2">
+<div class="flex items-center justify-between border-b border-ink-black/15 pb-2 mb-3">
+<span class="font-code-inline text-[11px] text-ink-black font-semibold">monolith.pub/bauhaus-100</span>
+<span class="font-metadata-num text-[10px] text-stamp-green bg-stamp-green/10 px-1.5 py-0.5 border border-stamp-green/30">CLS: 0.000</span>
+</div>
+<!-- Architectural Essay Mount -->
+<div class="bg-white border border-ink-black/15 p-4 flex flex-col gap-2.5">
+<div class="h-2 w-1/4 bg-secondary-container"></div>
+<div class="h-4 w-5/6 bg-ink-black"></div>
+<div class="space-y-1.5 pt-1">
+<div class="h-1.5 w-full bg-secondary-container"></div>
+<div class="h-1.5 w-11/12 bg-secondary-container"></div>
+<div class="h-1.5 w-4/6 bg-secondary-container"></div>
+</div>
+<div class="grid grid-cols-3 gap-2 pt-2">
+<div class="h-12 bg-surface-container border border-secondary-container flex items-center justify-center font-mono text-[8px] text-ink-muted">FIG A</div>
+<div class="h-12 bg-surface-container border border-secondary-container flex items-center justify-center font-mono text-[8px] text-ink-muted">FIG B</div>
+<div class="h-12 bg-surface-container border border-secondary-container flex items-center justify-center font-mono text-[8px] text-ink-muted">FIG C</div>
+</div>
+</div>
+<div class="mt-2.5 flex items-center justify-between font-hand text-[15px] text-ink-muted">
+<span>Fig 02.2 · Zero-shift Typography Raster</span>
+<span class="font-metadata-num text-[10px] text-ink-black">BUILD: 142ms</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- PROJECT 03: LEDGERKIT (WIDE-PAN ARCHIVAL SPREAD) -->
+<article class="relative">
+<div class="bg-paper-mat border border-ink-black/20 p-6 md:p-10 shadow-[6px_6px_0px_rgba(24,24,22,0.08)] relative">
+<div class="paper-tape w-20 h-5 -top-3 left-1/3 rotate-[-1deg]"></div>
+<div class="photo-corner-tl"></div>
+<div class="photo-corner-br"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+<!-- Left: Double Entry Visual (5 cols) -->
+<div class="lg:col-span-5 bg-[#F4EFE6] border border-ink-black/20 p-4 relative">
+<div class="flex items-center justify-between border-b border-ink-black/15 pb-2 mb-3">
+<span class="font-code-inline text-[11px] text-ink-black font-semibold">ledger_sync::wasm_runtime</span>
+<span class="font-metadata-num text-[10px] text-stamp-green bg-stamp-green/10 px-1.5 py-0.5 border border-stamp-green/30">OFFLINE READY</span>
+</div>
+<!-- Double Entry Ledger Card -->
+<div class="bg-white border border-ink-black/15 p-4 flex flex-col gap-2 font-mono text-[11px]">
+<div class="flex justify-between items-center border-b border-secondary-container pb-1 text-ink-black">
+<span class="font-semibold">TXN #49281 // BALANCED</span>
+<span class="text-stamp-green font-bold">Δ 0.00 EUR</span>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<div class="p-2 bg-surface-container border border-secondary-container">
+<span class="block text-ink-black font-bold text-[9px] uppercase">DEBIT [ACC_09]</span>
+<span class="text-ink-black font-medium">1,400.00 EUR</span>
+</div>
+<div class="p-2 bg-surface-container border border-secondary-container">
+<span class="block text-ink-black font-bold text-[9px] uppercase">CREDIT [ACC_24]</span>
+<span class="text-ink-black font-medium">1,400.00 EUR</span>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] text-ink-muted pt-1 border-t border-secondary-container">
+<span>CRDT: Yjs State Vector</span>
+<span class="text-ink-black font-semibold">CONFLICTS: ZERO</span>
+</div>
+</div>
+<div class="mt-2.5 flex items-center justify-between font-hand text-[15px] text-ink-muted">
+<span>Fig 03.1 · Autonomous Client-Side Convergence</span>
+<span class="font-metadata-num text-[10px] text-ink-black">WASM 4.8MB</span>
+</div>
+</div>
+<!-- Right: Details (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="flex items-baseline gap-3">
+<span class="font-headline-xl text-[54px] md:text-[62px] text-stamp-green/80 italic font-serif leading-none select-none">
+                      03.
+                    </span>
+<div class="flex flex-col">
+<span class="font-metadata-caps text-[10px] tracking-widest text-ink-muted uppercase">LOCAL-FIRST FINANCIAL ENGINE</span>
+<h3 class="font-headline-md text-[28px] md:text-[34px] leading-tight text-ink-black font-normal">
+                        LedgerKit: Local-first double-entry accounting runtime
+                      </h3>
+</div>
+</div>
+<p class="font-body-md text-[16px] text-ink-muted leading-relaxed">
+                    An offline-capable embedded ledger engine utilizing Conflict-free Replicated Data Types (CRDTs) and WebAssembly SQLite. Enables continuous peer-to-peer reconciliation of immutable financial journals without requiring central locking or online connectivity.
+                  </p>
+<!-- Museum Catalogue Specs Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 py-3 border-y border-ink-black/10 font-mono text-[11px]">
+<div>
+<span class="block text-ink-muted text-[9px] uppercase">YEAR</span>
+<span class="text-ink-black font-medium">2025</span>
+</div>
+<div>
+<span class="block text-ink-muted text-[9px] uppercase">ROLE</span>
+<span class="text-ink-black font-medium">Core Systems Dev</span>
+</div>
+<div>
+<span class="block text-ink-muted text-[9px] uppercase">RUNTIME</span>
+<span class="text-ink-black font-medium">WASM SQLite</span>
+</div>
+<div>
+<span class="block text-ink-muted text-[9px] uppercase">CATALOG ID</span>
+<span class="text-ink-black font-medium">#NY-098</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+<div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-ink-muted">
+<span class="border border-ink-black/25 px-2 py-0.5 bg-paper-cream">TypeScript</span>
+<span class="border border-ink-black/25 px-2 py-0.5 bg-paper-cream">WebAssembly</span>
+<span class="border border-ink-black/25 px-2 py-0.5 bg-paper-cream">SQLite</span>
+<span class="border border-ink-black/25 px-2 py-0.5 bg-paper-cream">Yjs CRDTs</span>
+</div>
+<a class="ink-link font-metadata-caps text-[11px] tracking-wider uppercase text-primary font-bold inline-flex items-center gap-1" href="#">
+<span>Read Convergence Protocol</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- 5. STUDIO NOTEBOOK MANIFESTO & RULED PAPER EXCERPT -->
+<section class="mt-20 md:mt-28" id="studio-notebook">
+<div class="border border-ink-black/25 bg-paper-mat p-8 md:p-12 relative shadow-[4px_4px_0px_rgba(24,24,22,0.1)]">
+<!-- Archival Tape Pin -->
+<div class="paper-tape w-24 h-5 -top-3 left-1/2 -translate-x-1/2"></div>
+<div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-ink-black/20 pb-4 mb-8 gap-2">
+<div>
+<span class="font-metadata-caps text-[10px] tracking-widest text-primary uppercase font-bold">EXCERPT // DISCIPLINARY CODE</span>
+<h3 class="font-headline-lg text-[32px] md:text-[38px] text-ink-black font-normal mt-1">
+                Studio Architectural Principles
+              </h3>
+</div>
+<div class="font-hand text-xl text-ink-muted rotate-[-1deg]">
+              Recorded in Nairobi, Spring 2026
+            </div>
+</div>
+<!-- Ruled Paper Effect Container -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 ruled-paper pt-2">
+<div class="flex flex-col gap-1">
+<span class="font-metadata-caps text-[11px] font-bold text-stamp-green uppercase">
+                I. STRICT DETERMINISM
+              </span>
+<h4 class="font-headline-sm text-[20px] text-ink-black font-serif">
+                State Machines over Ad-hoc Flags
+              </h4>
+<p class="font-body-sm text-[14px] text-ink-muted leading-[28px] mt-1">
+                Every distributed runtime must be provably complete. We model asynchronous lifecycles with strict finite state machines so impossible transitional states are eliminated by design.
+              </p>
+<div class="font-hand text-lg text-ink-black/70 pt-2 -rotate-1">
+                — verified in unit suites
+              </div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-metadata-caps text-[11px] font-bold text-stamp-green uppercase">
+                II. LOW COMPLEXITY BUDGETS
+              </span>
+<h4 class="font-headline-sm text-[20px] text-ink-black font-serif">
+                Primitives Before Dependencies
+              </h4>
+<p class="font-body-sm text-[14px] text-ink-muted leading-[28px] mt-1">
+                Software rot starts with bloated vendor baggage. We rely on rock-solid Unix and functional primitives before reaching for third-party libraries. If you cannot explain it on paper, do not deploy it.
+              </p>
+<div class="font-hand text-lg text-ink-black/70 pt-2 rotate-1">
+                — keep dependencies &lt; 15
+              </div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-metadata-caps text-[11px] font-bold text-stamp-green uppercase">
+                III. TACTILE QUIETUDE
+              </span>
+<h4 class="font-headline-sm text-[20px] text-ink-black font-serif">
+                Zero-Noise Reader Interfaces
+              </h4>
+<p class="font-body-sm text-[14px] text-ink-muted leading-[28px] mt-1">
+                Software tools must respect human attention. We eliminate superfluous notifications, flashing indicators, and artificial urgency in favor of quiet typography and physical printing clarity.
+              </p>
+<div class="font-hand text-lg text-ink-black/70 pt-2 -rotate-2">
+                — quiet dignity of ink
+              </div>
+</div>
+</div>
+<!-- Bottom Studio Dispatch Note -->
+<div class="mt-10 pt-6 border-t border-ink-black/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-surface-container-low/50 p-4 border border-secondary-container">
+<div class="flex flex-col gap-0.5">
+<span class="font-metadata-caps text-[10px] tracking-wider text-ink-black uppercase font-semibold">
+                OPEN APPOINTMENTS &amp; ENGAGEMENT
+              </span>
+<p class="font-body-sm text-[13px] text-ink-muted">
+                Available for high-concurrency systems design, distributed consensus audits, and bespoke typography engines.
+              </p>
+</div>
+<a class="px-5 py-2.5 bg-ink-black text-paper-cream font-metadata-caps text-[11px] tracking-widest uppercase hover:bg-primary transition-colors whitespace-nowrap" href="mailto:newton@nyoro.studio">
+              Inquire with Newton ↗
+            </a>
+</div>
+</div>
+</section>
+<!-- 6. COLOPHON & PHYSICAL PRINT SPECIFICATION -->
+<section class="mt-16 pt-10 border-t border-ink-black/20" id="colophon">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<div class="md:col-span-4 flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 bg-primary"></span>
+<span class="font-metadata-caps text-[11px] font-bold uppercase tracking-wider text-ink-black">
+                COLOPHON &amp; PRINT METRICS
+              </span>
+</div>
+<p class="font-body-sm text-[13px] text-ink-muted leading-relaxed">
+              This monograph is composed on English cream (#F9F7F1) 300gsm virtual cotton stock with tactile ink accents. Hand-crafted by Newton Nyoro.
+            </p>
+</div>
+<div class="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-6 font-mono text-[11px] text-ink-muted">
+<div class="flex flex-col gap-1 border-l border-ink-black/20 pl-3">
+<span class="text-ink-black font-semibold uppercase text-[10px]">PRIMARY TYPE</span>
+<span>Newsreader Serif</span>
+<span class="text-[10px]">Optical Size 6–72pt</span>
+</div>
+<div class="flex flex-col gap-1 border-l border-ink-black/20 pl-3">
+<span class="text-ink-black font-semibold uppercase text-[10px]">METADATA / CODE</span>
+<span>JetBrains Mono</span>
+<span class="text-[10px]">Weights: 300, 400, 500</span>
+</div>
+<div class="flex flex-col gap-1 border-l border-ink-black/20 pl-3">
+<span class="text-ink-black font-semibold uppercase text-[10px]">ANNOTATION INK</span>
+<span>Caveat Script</span>
+<span class="text-[10px]">Simulated Pen Tilt -2°</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- 7. TACTILE MONOGRAPH FOOTER -->
+<footer class="w-full bg-paper-mat border-t border-ink-black/20 py-10 mt-12">
+<div class="max-w-[1180px] mx-auto px-4 md:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-lg font-serif font-medium uppercase text-ink-black">NEWTON NYORO</span>
+<span class="text-ink-muted/50">—</span>
+<span class="font-metadata-caps text-[10px] tracking-widest text-ink-muted uppercase">ARCHIVE № 2026-N</span>
+</div>
+<span class="font-metadata-num text-[11px] text-ink-muted">
+          All architectural rights preserved · Clean deterministic engineering · Nairobi &amp; London
+        </span>
+</div>
+<nav class="flex flex-wrap items-center gap-6 font-metadata-caps text-[11px] tracking-wider uppercase text-ink-black">
+<a class="ink-link hover:text-primary transition-colors" href="https://github.com" rel="noreferrer" target="_blank">GitHub</a>
+<a class="ink-link hover:text-primary transition-colors" href="https://linkedin.com" rel="noreferrer" target="_blank">LinkedIn</a>
+<a class="ink-link hover:text-primary transition-colors" href="https://x.com" rel="noreferrer" target="_blank">X / Dispatch</a>
+<a class="ink-link hover:text-primary transition-colors" href="mailto:newton@nyoro.studio">Direct Wire</a>
+<a class="ink-link text-stamp-green font-bold" href="#selected-work">Top of Index ↑</a>
+</nav>
+</div>
+</footer>
+
+
+</body></html>

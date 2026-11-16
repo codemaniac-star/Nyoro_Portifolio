@@ -1,0 +1,16 @@
+---
+title: "LedgerKit: Local-first accounting runtime"
+slug: ledgerkit
+---
+
+## The problem
+Field teams needed to record financial activity without relying on a stable connection while keeping every journal balanced and auditable.
+
+## The approach
+I combined an embedded SQLite database compiled to WebAssembly with CRDT-based replication. Each client keeps an immutable journal and exchanges updates peer to peer.
+
+## Outcome
+Entries can be recorded, reviewed, and reconciled offline while preserving double-entry invariants across clients.
+
+## Lessons learned
+Local-first systems need clear conflict semantics in the domain model. A ledger's invariants provide a useful boundary for replication.

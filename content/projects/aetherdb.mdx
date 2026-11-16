@@ -1,0 +1,16 @@
+---
+title: "AetherDB: Low-latency consensus cache"
+slug: aetherdb
+---
+
+## The problem
+A real-time telemetry platform needed predictable reads under heavy concurrent writes. Centralized locks made tail latency unpredictable and limited the system's ability to scale.
+
+## The approach
+I designed a memory-mapped storage engine around a lock-free ring buffer and a Raft-backed cluster. The runtime exposes a narrow TypeScript interface while keeping the hot path in Rust.
+
+## Outcome
+The system sustained 0.84ms p99 reads at 50,000 concurrent operations. A five-peer cluster maintained quorum health through node restarts and network interruptions.
+
+## Lessons learned
+Deterministic replay made failures reproducible. Keeping the coordination protocol small made the operational model easier to explain and audit.
