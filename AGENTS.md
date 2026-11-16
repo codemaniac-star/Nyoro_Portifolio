@@ -15,6 +15,7 @@
 - `components/`: shared editorial shell, project graphics, filters, and contact interactions.
 - `content/projects/*.mdx`: source case-study prose; project listing metadata is in `lib/projects.ts`.
 - `public/images/`: supplied Stitch preview and reference screenshots, plus the Open Graph preview.
+- Add project screenshots to `public/images/`, then set that project's `image` and `imageAlt` in `lib/projects.ts`. Add optional extra case-study shots to its `gallery` array; the card and detail view render them automatically.
 - `public/doodles/`: local SVG grain and hand-drawn marks extracted/recreated from the HTML export.
 - `public/files/`: downloadable public documents (place the approved resume PDF here).
 

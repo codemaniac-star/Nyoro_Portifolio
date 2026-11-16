@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Header() {
   return <header className="site-header"><div className="header-inner">
-    <Link href="/" className="brand" aria-label="Newton Nyoro home"><span className="brand-mark">NN</span><span className="brand-copy"><strong>Newton Nyoro</strong><small>Physical Systems &amp; Software Studio</small></span></Link>
+    <Link href="/" className="brand" aria-label="Newton Nyoro home"><span className="brand-mark">NN</span><span className="brand-copy"><strong>Newton Nyoro</strong><small>Interactive Software Developer</small></span></Link>
     <nav className="top-nav" aria-label="Main navigation"><Link className="ink-link" href="/projects">⌕ Project files</Link><Link className="button button-primary nav-cta" href="/contact">Hire me <span>↗</span></Link></nav>
   </div></header>;
 }

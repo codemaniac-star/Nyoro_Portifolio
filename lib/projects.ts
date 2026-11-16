@@ -2,7 +2,7 @@ export type Project = {
   slug: string; number: string; title: string; category: string; year: string;
   role: string; stack: string[]; catalogId: string; description: string;
   outcome: string; figure: string; liveUrl?: string; githubUrl?: string;
-  featured: boolean;
+  image?: string; imageAlt?: string; gallery?: { src: string; alt: string }[]; featured: boolean;
 };
 
 export const projects: Project[] = [
@@ -17,9 +17,14 @@ export const projects: Project[] = [
     outcome: "Reduced cold builds from 4.2 minutes to 142ms and held cumulative layout shift at 0.000 across a catalogue of 8,000 essays.", figure: "Zero-shift Typography Raster"
   },
   {
-    slug: "ledgerkit", number: "03", title: "LedgerKit: Local-first double-entry accounting runtime", category: "Local-first Financial Engine", year: "2025", role: "Core Systems Developer", stack: ["TypeScript", "WebAssembly", "SQLite", "Yjs CRDTs"], catalogId: "#NY-098", featured: true,
+    slug: "ledgerkit", number: "03", title: "LedgerKit: Local-first double-entry accounting runtime", category: "Local-first Financial Engine", year: "2025", role: "Core Systems Developer", stack: ["TypeScript", "WebAssembly", "SQLite", "Yjs CRDTs"], catalogId: "#NY-098", featured: false,
     description: "An offline-capable embedded ledger engine using conflict-free replicated data types and WebAssembly SQLite. It enables continuous peer-to-peer reconciliation of immutable financial journals without central locking or online connectivity.",
     outcome: "Journal entries converge across peers offline and reconcile automatically on reconnect, with balanced double-entry invariants maintained locally.", figure: "Autonomous Client-side Convergence"
+  },
+  {
+    slug: "tomorrow-kenya", number: "04", title: "Tomorrow Kenya: A manifesto for accountability", category: "Civic Accountability Platform", year: "2026", role: "Software Developer", stack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"], catalogId: "#NY-104", featured: true,
+    description: "A public civic platform that turns calls for accountability into an accessible manifesto, a corruption tracker, and a place for people to add their voices.",
+    outcome: "Brings the manifesto, corruption tracking, and petition experience together in one responsive public website.", figure: "Tomorrow Kenya — live site", liveUrl: "https://tomorrow-kenya.vercel.app/", githubUrl: "https://github.com/codemaniac-star/tomorrow-kenya", image: "/images/tomorrow-kenya.png", imageAlt: "Screenshot of the Tomorrow Kenya homepage"
   }
 ];
 
