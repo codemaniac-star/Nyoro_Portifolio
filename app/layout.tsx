@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Footer, Header, PageFrame } from "@/components/site";
 import "./globals.css";
+import "./cura-gallery.css";
 import type { Viewport } from "next";
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };

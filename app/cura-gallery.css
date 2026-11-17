@@ -1,0 +1,35 @@
+.project-screenshot.is-crossfade {
+  position: relative;
+}
+
+.project-screenshot.is-crossfade img {
+  position: absolute;
+  inset: 0;
+}
+
+.project-screenshot.is-crossfade .fade-first {
+  animation: cura-fade-first 9s ease-in-out infinite;
+}
+
+.project-screenshot.is-crossfade .fade-second {
+  animation: cura-fade-second 9s ease-in-out infinite;
+}
+
+@keyframes cura-fade-first {
+  0%, 42% { opacity: 1; }
+  50%, 92% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes cura-fade-second {
+  0%, 42% { opacity: 0; }
+  50%, 92% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-screenshot.is-crossfade .fade-first,
+  .project-screenshot.is-crossfade .fade-second { animation: none; }
+  .project-screenshot.is-crossfade .fade-first { opacity: 1; }
+  .project-screenshot.is-crossfade .fade-second { opacity: 0; }
+}
