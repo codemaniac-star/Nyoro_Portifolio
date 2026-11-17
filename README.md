@@ -19,7 +19,7 @@ The visual system uses warm cream paper, charcoal ink, forest-green accents, fin
 ## Featured work
 
 - **Tomorrow Kenya** — a civic accountability platform centered on a manifesto, a corruption tracker, and petitions. [Live project](https://tomorrow-kenya.vercel.app/) · [Source](https://github.com/codemaniac-star/tomorrow-kenya)
-- **AetherDB** — a systems engineering study exploring distributed memory, consensus, and low-latency telemetry.
+- **Veldspar** — a systems engineering study exploring distributed memory, consensus, and low-latency telemetry.
 - **Cura Doula App** — a perinatal care experience for doula matching and birth support. This was Newton’s first shipped project. [Live project](https://v0-cura-doula-app.vercel.app/) · [Source](https://github.com/codemaniac-star/cura-doula-app)
 
 The archive also includes Monolith, LedgerKit, and an ongoing data-science portfolio about learning predictive machine learning through food-price data.

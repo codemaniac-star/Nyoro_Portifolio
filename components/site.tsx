@@ -8,7 +8,7 @@ export function Header() {
 }
 
 export function Footer() {
-  return <footer className="site-footer"><div className="footer-inner"><div><div className="footer-brand"><span>Newton Nyoro</span><i>”</i><small>Archive № 2026-N</small></div><p>Copyright Nyoro 2026.</p></div><nav aria-label="Social links"><a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a><a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://x.com" target="_blank" rel="noreferrer">X / Dispatch</a><Link href="/contact">Direct wire</Link><a href="#top">Top of index ‘</a></nav></div></footer>;
+  return <footer className="site-footer"><div className="footer-inner"><div><div className="footer-brand"><span>Newton Nyoro</span><i>”</i><small>Archive № 2026-N</small></div><p>Copyright Nyoro 2026.</p></div><nav aria-label="Social links"><a href="https://github.com/codemaniac-star" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/newton-nyoro-2511131b7" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://x.com" target="_blank" rel="noopener noreferrer">X / Dispatch</a><Link href="/contact">Direct wire</Link><a href="#top">Top of index ‘</a></nav></div></footer>;
 }
 
 export function PageFrame() {
