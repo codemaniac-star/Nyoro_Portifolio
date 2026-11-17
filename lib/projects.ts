@@ -1,31 +1,10 @@
-export type Project = {
-  slug: string; number: string; title: string; category: string; year: string;
-  role: string; stack: string[]; catalogId: string; description: string;
-  outcome: string; figure: string; liveUrl?: string; githubUrl?: string;
-  image?: string; imageAlt?: string; gallery?: { src: string; alt: string }[]; featured: boolean;
-};
-
-export const projects: Project[] = [
-  {
-    slug: "aetherdb", number: "01", title: "AetherDB: Low-latency consensus cache", category: "Distributed Memory Engine", year: "2026", role: "Lead Architect", stack: ["Rust", "Raft Consensus", "TypeScript", "Memory-Mapped"], catalogId: "#NY-084", featured: true,
-    description: "A high-throughput distributed memory-mapped storage engine built for real-time telemetry streaming and high-frequency writes. Achieved sustained sub-millisecond p99 read latencies under 50,000 concurrent client operations without centralized locking bottlenecks.",
-    outcome: "Sustained 0.84ms p99 read latency while serving 50,000 concurrent operations, using a lock-free ring buffer and a five-peer Raft cluster.", figure: "Lock-free Ring Buffer Telemetry"
-  },
-  {
-    slug: "monolith", number: "02", title: "Monolith: Headless publishing engine for architectural reviews", category: "Headless Print Essay Engine", year: "2025", role: "Principal Engineer", stack: ["Next.js 14", "Tailwind CSS", "PostgreSQL", "Edge Workers"], catalogId: "#NY-091", featured: true,
-    description: "Engineered a bespoke markdown-driven CMS delivering zero-layout-shift visual essays for longform criticism. It features mathematical baseline grids, automated typographic ligature binding, and high-performance edge compilation across 8,000 published essays.",
-    outcome: "Reduced cold builds from 4.2 minutes to 142ms and held cumulative layout shift at 0.000 across a catalogue of 8,000 essays.", figure: "Zero-shift Typography Raster"
-  },
-  {
-    slug: "ledgerkit", number: "03", title: "LedgerKit: Local-first double-entry accounting runtime", category: "Local-first Financial Engine", year: "2025", role: "Core Systems Developer", stack: ["TypeScript", "WebAssembly", "SQLite", "Yjs CRDTs"], catalogId: "#NY-098", featured: false,
-    description: "An offline-capable embedded ledger engine using conflict-free replicated data types and WebAssembly SQLite. It enables continuous peer-to-peer reconciliation of immutable financial journals without central locking or online connectivity.",
-    outcome: "Journal entries converge across peers offline and reconcile automatically on reconnect, with balanced double-entry invariants maintained locally.", figure: "Autonomous Client-side Convergence"
-  },
-  {
-    slug: "tomorrow-kenya", number: "04", title: "Tomorrow Kenya: A manifesto for accountability", category: "Civic Accountability Platform", year: "2026", role: "Software Developer", stack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"], catalogId: "#NY-104", featured: true,
-    description: "A public civic platform that turns calls for accountability into an accessible manifesto, a corruption tracker, and a place for people to add their voices.",
-    outcome: "Brings the manifesto, corruption tracking, and petition experience together in one responsive public website.", figure: "Tomorrow Kenya — live site", liveUrl: "https://tomorrow-kenya.vercel.app/", githubUrl: "https://github.com/codemaniac-star/tomorrow-kenya", image: "/images/tomorrow-kenya.png", imageAlt: "Screenshot of the Tomorrow Kenya homepage"
-  }
+export type Project = { slug:string; number:string; title:string; category:string; year:string; role:string; stack:string[]; catalogId:string; description:string; outcome:string; figure:string; liveUrl?:string; githubUrl?:string; image?:string; imageAlt?:string; gallery?:{src:string;alt:string}[]; featured:boolean };
+export const projects:Project[] = [
+ {slug:"tomorrow-kenya",number:"01",title:"Tomorrow Kenya: A manifesto for accountability",category:"Civic Accountability Platform",year:"2026",role:"Software Developer",stack:["Next.js","TypeScript","Tailwind CSS","Supabase"],catalogId:"#NY-104",featured:true,description:"A public civic platform bringing together an accountability manifesto, corruption tracker, and petition experience to help people turn concern into organized civic action.",outcome:"A responsive public platform combining civic information and participation.",figure:"Tomorrow Kenya — live site",liveUrl:"https://tomorrow-kenya.vercel.app/",githubUrl:"https://github.com/codemaniac-star/tomorrow-kenya",image:"/images/tomorrow-kenya.png",imageAlt:"Tomorrow Kenya homepage"},
+ {slug:"aetherdb",number:"02",title:"AetherDB: Low-latency consensus cache",category:"Distributed Memory Engine",year:"2026",role:"Systems Engineering Study",stack:["Rust","Raft Consensus","TypeScript","Memory-Mapped"],catalogId:"#NY-084",featured:true,description:"An editorial concept for a high-throughput distributed memory-mapped store, presented as a systems design study exploring low-latency telemetry and concurrent writes.",outcome:"A visual systems study illustrating a five-peer cluster, commit stream, and latency targets.",figure:"Lock-free Ring Buffer Telemetry"},
+ {slug:"cura-doula-app",number:"03",title:"Cura Doula App: Perinatal care support",category:"Maternal Care Platform",year:"2026",role:"Software Developer",stack:["Next.js","React","TypeScript","Tailwind CSS"],catalogId:"#NY-112",featured:true,description:"A digital experience shaped around practical support for people navigating pregnancy, birth, and postpartum care. Cura was my first shipped project, and an important learning milestone in building a complete product.",outcome:"First shipped project; created a foundation for learning product design, frontend implementation, and shipping a usable web experience.",figure:"First shipped project",liveUrl:"https://v0-cura-doula-app.vercel.app/",githubUrl:"https://github.com/codemaniac-star/cura-doula-app"},
+ {slug:"monolith",number:"04",title:"Monolith: Headless publishing engine",category:"Editorial Systems Study",year:"2025",role:"Engineering Study",stack:["Next.js","Tailwind CSS","PostgreSQL","Edge Workers"],catalogId:"#NY-091",featured:false,description:"An editorial concept for a markdown-driven publishing platform, exploring typographic systems and stable long-form reading experiences.",outcome:"A visual product study of an editorial publishing workflow.",figure:"Zero-shift Typography Raster"},
+ {slug:"ledgerkit",number:"05",title:"LedgerKit: Local-first accounting runtime",category:"Local-first Systems Study",year:"2025",role:"Systems Study",stack:["TypeScript","WebAssembly","SQLite","CRDTs"],catalogId:"#NY-098",featured:false,description:"A concept for an offline-capable double-entry ledger using local storage and peer synchronization.",outcome:"Explores how local-first data can support dependable accounting workflows.",figure:"Autonomous Client-side Convergence"},
+ {slug:"ds-portfolio",number:"06",title:"Food Price Forecasting: Data Science Portfolio",category:"Ongoing Data Science Project",year:"2026",role:"Independent Study",stack:["Python","Pandas","Forecasting","Machine Learning"],catalogId:"#NY-118",featured:false,description:"An ongoing personal journey into predictive machine learning, using food prices and grocery data as a practical place to learn, experiment, and grow.",outcome:"A learning-in-public project; analysis, datasets, and predictive experiments are being developed step by step.",figure:"Food price and demand studies",githubUrl:"https://github.com/codemaniac-star/ds-portfolio"}
 ];
-
-export function getProject(slug: string) { return projects.find((project) => project.slug === slug); }
+export function getProject(slug:string){return projects.find(p=>p.slug===slug)}
