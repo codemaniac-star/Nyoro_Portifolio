@@ -3,12 +3,12 @@
 export function Header() {
   return <header className="site-header"><div className="header-inner">
     <Link href="/" className="brand" aria-label="Newton Nyoro home"><span className="brand-mark">NN</span><span className="brand-copy"><strong>Newton Nyoro</strong><small>Interactive Software Developer</small></span></Link>
-    <nav className="top-nav" aria-label="Main navigation"><Link className="ink-link" href="/projects">âŒ• Project files</Link><Link className="button button-primary nav-cta" href="/contact">Hire me <span>â†—</span></Link></nav>
+    <nav className="top-nav" aria-label="Main navigation"><Link className="ink-link" href="/projects">⌕ Project files</Link><Link className="button button-primary nav-cta" href="/contact">Hire me <span>—</span></Link></nav>
   </div></header>;
 }
 
 export function Footer() {
-  return <footer className="site-footer"><div className="footer-inner"><div><div className="footer-brand"><span>Newton Nyoro</span><i>â€”</i><small>Archive â„– 2026-N</small></div><p>Copyright Nyoro 2026.</p></div><nav aria-label="Social links"><a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a><a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://x.com" target="_blank" rel="noreferrer">X / Dispatch</a><Link href="/contact">Direct wire</Link><a href="#top">Top of index â†‘</a></nav></div></footer>;
+  return <footer className="site-footer"><div className="footer-inner"><div><div className="footer-brand"><span>Newton Nyoro</span><i>”</i><small>Archive № 2026-N</small></div><p>Copyright Nyoro 2026.</p></div><nav aria-label="Social links"><a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a><a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://x.com" target="_blank" rel="noreferrer">X / Dispatch</a><Link href="/contact">Direct wire</Link><a href="#top">Top of index ‘</a></nav></div></footer>;
 }
 
 export function PageFrame() {

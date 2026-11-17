@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Footer, Header, PageFrame } from "@/components/site";
 import "./globals.css";
+import type { Viewport } from "next";
+
+export const viewport: Viewport = { width: "device-width", initialScale: 1 };
 
 const title = "Newton Nyoro — Physical Systems & Software Studio";
 const description = "Senior software engineer building distributed systems, high-concurrency runtimes, and quiet editorial interfaces.";
