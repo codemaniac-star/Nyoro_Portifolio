@@ -2,7 +2,7 @@
 
 The personal portfolio of Newton Nyoro, an interactive software developer. The site presents selected software projects, an about and résumé page, contact details, and a small support page in a warm, editorial style inspired by an archival print catalogue.
 
-**Live website:** [newtonnyoro-cu9o1n6w9-newtnmukuha06-5739s-projects.vercel.app](https://newtonnyoro.vercel.app/)
+**Live website:** [My_Portifolio](https://newtonnyoro.vercel.app/)
 
 ## What’s in the site
 
